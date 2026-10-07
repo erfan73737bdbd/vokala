@@ -1,0 +1,1802 @@
+:root{--green:#0b3d2e;--green-2:#0f5a3f;--accent:#2fb67c;--mint:#e6f4ed;--mint-2:#c9e5d8;--text:#12301f;--muted:#5b6f64;--line:#dbe7e0;--bg:#f9f9f7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit;text-decoration:none}svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+h2{font-size:24px;font-weight:800;margin:0 0 6px;text-align:center}.sub{text-align:center;color:var(--muted);font-size:14px;margin:0 0 26px}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--green);color:#fff;font:700 14px Vazirmatn,Tahoma,sans-serif;padding:10px 18px;border-radius:8px;text-align:center}
+.btn.light{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4)}
+/* header */
+.top{background:#fff;border-bottom:1px solid var(--line)}.top .wrap{display:flex;align-items:center;gap:14px;height:66px;max-width:1240px}
+.logo img{height:82px; width: 122px;  display:block}nav{display:flex;gap:6px;flex:1;margin-inline-start:18px;font-size:14px}nav a{font-size: 1rem;   position:relative;padding:9px 16px;border-radius:10px;color:var(--text);transition:background .25s,color .25s,transform .25s,box-shadow .25s}nav a::after{content:'';position:absolute;bottom:3px;inset-inline:50%;height:2px;border-radius:2px;background:var(--accent);transition:inset-inline .25s}nav a:hover{background:var(--mint);color:var(--green);transform:translateY(-2px);box-shadow:0 6px 14px rgba(11,61,46,.12)}nav a:hover::after,nav a.on::after{inset-inline:16px}nav a.on{background:var(--mint);color:var(--green-2);font-weight:700}nav a:active{transform:translateY(0)}nav a:focus-visible,.login:focus-visible,.sbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sbtn{width:40px;height:40px;border:1px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;color:var(--green);transition:.25s}.sbtn:hover{background:var(--mint);border-color:var(--green-2);transform:translateY(-2px) rotate(-8deg)}.login{transition:.25s}.login:hover{background:var(--green-2);transform:translateY(-2px);box-shadow:0 8px 18px rgba(11,61,46,.3)}.sbtn svg{width:18px;height:18px}.login{font-size:13px}
+/* hero */
+.hero{position:relative;height:266px;background:radial-gradient(900px 300px at 85% 40%,#07301f,#05261b 70%);overflow:hidden}
+.hero__img{position:absolute;left:0;top:0;height:100%;width:min(52.7%,760px);object-fit:cover;object-position:left;clip-path:polygon(0 0,100% 0,96% 20%,92% 40%,88% 52%,84% 67%,79% 82%,74.5% 100%,0 100%)}
+.hero::before{content:"";position:absolute;top:0;bottom:0;left:0;width:min(52.7%,760px);background:linear-gradient(90deg,transparent 70%,rgba(5,38,27,.35));clip-path:polygon(0 0,100% 0,96% 20%,92% 40%,88% 52%,84% 67%,79% 82%,74.5% 100%,0 100%);pointer-events:none;z-index:1}
+.hero__in{position:relative;z-index:2;width:calc(100% - 2*clamp(20px,6vw,60px));max-width:1200px;height:100%;margin:0 auto}
+.slide{position:absolute;top:25px;right:0;width:580px;text-align:right;color:#fff;opacity:0;transform:translateX(70px);transition:opacity .6s,transform .6s;pointer-events:none}
+.slide.on{opacity:1;transform:none;pointer-events:auto}.slide.out{transform:translateX(-70px)}.slide.pre2{transform:translateX(-70px)}
+.chip{display:inline-block;border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:3px 14px;font-size:12px;background:#ffffff0d}
+.slide h1{margin:9px 0 8px;font-size:29px;line-height:1.35;font-weight:800}.slide em{font-style:normal;color:#35d08f}
+.slide p{margin:0 0 12px;font-size:13.5px;line-height:1.7;white-space:nowrap;color:#e0efe7}
+.hbtn{display:inline-flex;align-items:center;gap:16px;height:36px;padding:0 20px 0 4px;border:1px solid rgba(255,255,255,.4);border-radius:20px;background:#ffffff1a;font-weight:700;font-size:14px}
+.hbtn .ar{width:28px;height:28px;border-radius:50%;background:#35d08f;display:grid;place-items:center;color:#fff} .ar svg{width:16px;height:16px;stroke:#fff}
+
+.hbtn .ar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  
+  /* افکت طلایی درخشان (گرادیان چند لایه) */
+  background: linear-gradient(145deg, #fcf6ba, #bf953f, #b38728);
+  
+  /* ایجاد عمق برای اینکه حالت فلزی بگیرد */
+  box-shadow: 0 4px 8px rgba(191, 149, 63, 0.3), inset 0 -2px 2px rgba(255, 255, 255, 0.4);
+  
+  /* ترنزیشن نرم برای تعامل */
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+  border: none; /* در صورت نیاز */
+}
+
+/* افکت هاور (زمانی که موس روش می‌ره، درخشش بیشتر می‌شه) */
+.hbtn .ar:hover {
+  filter: brightness(1.2); /* کمی روشن‌تر و درخشان‌تر */
+  transform: scale(1.05);  /* کمی بزرگ شدن برای حس تعامل */
+  box-shadow: 0 6px 12px rgba(191, 149, 63, 0.5);
+}
+
+
+.hnav{z-index:3;position:absolute;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;border:1px solid #ffffffaa;background:#0a3a2bcc;color:#fff;cursor:pointer;display:grid;place-items:center;padding:0}.hnav svg{width:14px;height:14px}
+.hnext{left:22px}.hprev{right:22px}
+.dots{z-index:3;position:absolute;bottom:26px;left:47%;display:flex;gap:7px}.dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#ffffff77;cursor:pointer;transition:.3s}.dots .on{width:18px;border-radius:5px;background:#35d08f}
+/* search */
+/* باکس اصلی جستجو */
+.search {
+  position: relative;
+  z-index: 2;
+  margin: -26px auto 0 auto;
+  display: flex;
+  gap: 8px; /* فاصله کمتر بین المان‌ها */
+  background: #fff;
+  border-radius: 12px; /* کمی گردی کمتر برای ظاهر مدرن‌تر */
+  padding: 6px; /* کاهش پدینگ برای جمع‌وجور شدن */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  width: 760px;
+  max-width: calc(100% - 24px);
+  align-items: center; /* تراز عمودی وسط */
+}
+
+/* ورودی‌ها و انتخابگر */
+.search input, 
+.search select {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #ddd; /* فرض بر اینکه var(--line) خاکستری است */
+  border-radius: 8px;
+  height: 42px; /* ارتفاع یکپارچه */
+  padding: 0 12px;
+  font: 13px Vazirmatn, Tahoma, sans-serif;
+  background: #fff;
+  transition: outline 0.3s ease; /* انیمیشن نرم برای اوت‌لاین */
+  outline: none; /* حذف اوت‌لاین پیش‌فرض مرورگر */
+}
+
+/* تغییر رنگ اوت‌لاین هنگام فوکوس */
+.search input:focus-visible,
+.search select:focus-visible {
+  outline: 2px solid #10b981; /* رنگ سبز */
+}
+
+/* دکمه جستجو */
+.search .btn {
+  height: 42px; /* هماهنگ با ارتفاع اینپوت */
+  padding: 0 24px;
+  border: none;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search .btn:hover {
+  background: #059669; /* سبز تیره‌تر برای هاور */
+}
+
+.cats{padding-top:36px}.tiles{display:flex;flex-direction:column;gap:7px}.trow{display:flex;gap:7px}.tile{flex:1 1 auto;height:57px;padding:0 16px;white-space:nowrap}
+.tile{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;transition:.2s}
+.tile svg{color:var(--green-2);flex:none;width:28px;height:28px}.tile span{white-space:normal}.tile:hover{border-color:var(--green-2);box-shadow:0 6px 16px rgba(11,61,46,.1)}
+.cities{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;background:#eef3f0;padding:8px;border-radius:10px}
+.city{padding:7px 18px;border-radius:8px;background:#e4ece8;font-size:13px}.city.on{background:var(--green);color:#fff}.all{margin-inline-start:auto;font-size:13px;color:var(--green-2);padding:7px 10px}
+/* lawyers */
+.lawyers{padding-top:34px}.hl{text-align:right;display:flex;align-items:center;gap:8px;font-size:20px}.hl svg{width:22px}
+.lwrap{position:relative}.lgrid{display:grid;grid-auto-flow:column;grid-auto-columns:calc(25% - 8px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.lgrid>*{scroll-snap-align:start}.lnav{position:absolute;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;padding:0;z-index:2;box-shadow:0 2px 6px #0002;color:var(--green)}.lnav svg{width:13px;height:13px}.lr{right:-14px}.ll{left:-14px}.lawyer{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.lrow{flex:1;display:flex;gap:10px;margin-bottom:10px;justify-content:space-between}.lrow img{width:74px;height:81px;object-fit:cover;border-radius:8px}.lrow b{display:block;font-size:12.5px;white-space:nowrap}.lrow small{display:block;font-size:11px;color:var(--muted);line-height:1.8}.lrow em{font-style:normal;color:#e0a100;font-size:12px;font-weight:700}
+.lawyer .btn{display:block;font-size:12px;padding:8px}
+/* why */
+.why{margin-top:30px;background:linear-gradient(90deg,transparent 0,#20663ae8 min(24%,300px)),var(--bg) left bottom/auto 100% no-repeat #edf5f0;padding:36px 0; border-radius:20px ;}
+.why__in{display:grid;grid-template-columns:1fr 1.5fr;gap:30px;align-items:center}.contact{order:-1}.why h2,.why p{text-align:right}.why p{font-size:13.5px;line-height:2.1;color:var(--muted)}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;font-size:12px;line-height:1.9;text-align:center,}.feats svg{display:block;margin:0 auto 6px;width:30px;height:30px;color:var(--green-2)}
+.contact{background:#fff;border-radius:12px;padding:20px;box-shadow:0 10px 26px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:10px}.contact h3{margin:0;font-size:17px}.contact small{color:var(--muted);font-size:11px}
+.contact input,.contact textarea{border:1px solid var(--line);border-radius:8px;padding:10px;font:13px Vazirmatn,Tahoma,sans-serif;resize:none;height:44px}.contact textarea{height:70px}
+/* services */
+.vk-services{padding:26px 64px 30px;background:linear-gradient(180deg,var(--bg),#eef6f1 55%,var(--bg))}
+.vk-services__head{text-align:center;margin-bottom:16px}.vk-services__head svg{width:26px;height:26px;stroke:var(--green-2);margin-bottom:2px}
+.vk-services__head h2{font-size:19px;margin:0 0 3px}.vk-services__head p{margin:0;font-size:12px;color:var(--muted)}
+.vk-services__grid{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.vk-arch{position:relative;padding-bottom:7px;display:flex}.vk-arch::after{content:"";position:absolute;inset-inline:-5px;bottom:0;height:7px;background:var(--green-2);border-radius:3px;opacity:.9}
+.vk-arch__body{position:relative;flex:1;background:#fff;border:1px solid var(--line);border-radius:90px 90px 6px 6px;padding:22px 12px 14px;text-align:center;min-height:196px;transition:transform .2s,box-shadow .2s}
+.vk-arch__body::before{content:"";position:absolute;inset:5px;border:1px solid var(--mint-2);border-radius:85px 85px 3px 3px;pointer-events:none}
+.vk-arch:hover .vk-arch__body{transform:translateY(-4px);box-shadow:0 14px 26px rgba(11,61,46,.14)}
+.vk-arch__icon{width:44px;height:44px;margin:0 auto 10px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 0 0 4px var(--mint)}.vk-arch__icon svg{width:22px;height:22px;stroke:#fff}
+.vk-arch h3{margin:0 0 4px;font-size:13px;line-height:1.7}.vk-arch p{margin:0;font-size:11.5px;line-height:1.8;color:var(--muted)}
+.vk-arch--featured .vk-arch__body{background:linear-gradient(170deg,var(--green-2),var(--green));border-color:var(--green)}.vk-arch--featured .vk-arch__body::before{border-color:#ffffff40}
+.vk-arch--featured h3{color:#fff}.vk-arch--featured p{color:#cfe6db}.vk-arch--featured .vk-arch__icon{background:#fff;box-shadow:0 0 0 4px #ffffff2e}.vk-arch--featured .vk-arch__icon svg{stroke:var(--green)}
+/* blog + footer */
+.blog{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;padding-top:30px;padding-bottom:36px;align-items:start}.blog>.arts{order:-1}
+.faq{display:flex;flex-direction:column;gap:8px}details{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13px}summary{cursor:pointer}details p{margin:8px 0 0;color:var(--muted);font-size:12px}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.art{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;padding-bottom:10px}.art img{width:100%;height:56px;object-fit:cover;display:block}.art p{margin:8px 10px 2px;font-size:12px;font-weight:700;line-height:1.8}.art small{margin:0 10px;color:var(--muted);font-size:11px}
+footer{background:var(--green);color:#cfe6db;padding-top:30px;font-size:12.5px}.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:24px}.fgrid h4{color:#fff;margin:0 0 10px;font-size:14px}.fgrid a,.fgrid p{display:block;margin:0 0 6px}.flogo{height:40px;background:#fff;padding:4px 8px;border-radius:8px;margin-bottom:8px}
+.copy{text-align:center;border-top:1px solid #ffffff22;margin-top:24px;padding:12px;font-size:11px}
+@media(max-width:860px){nav{display:none;}.tiles{grid-template-columns:repeat(2,1fr)}.tile,.tile:nth-last-child(-n+6){grid-column:auto}.lgrid,.why__in,.blog,.fgrid{grid-template-columns:1fr 1fr}.why__in,.blog{grid-template-columns:1fr}.vk-services{padding:26px 16px}.vk-services__grid{grid-template-columns:repeat(2,1fr);row-gap:24px}.hero__txt{width:100%;padding-right:20px}.hero h1{font-size:22px}.feats{grid-template-columns:repeat(2,1fr)}.search{flex-wrap:wrap}.agrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+@media(min-width:1100px){
+.hero{height:320px}
+.slide{top:38px;width:700px}.slide h1{font-size:36px;margin:12px 0 10px}.slide p{font-size:15.5px;margin-bottom:16px}.chip{font-size:13px;padding:4px 16px}.hbtn{height:42px;font-size:15px;padding:0 24px 0 5px ; background-color: #c2a36a; }.hbtn .ar{width:32px;height:32px}
+.hnav{width:34px;height:34px;margin-top:-17px}.hnext{left:32px}.hprev{right:32px}.dots{bottom:34px}
+.search{margin-top:-30px}.search input,.search select,.search .btn{height:46px;font-size:14px}
+h2{font-size:30px}.sub{font-size:15.5px;margin-bottom:32px}.cats{padding-top:48px}
+.tiles{gap:10px}.trow{gap:10px}.tile{height:70px;font-size:15px;padding:0 22px;gap:14px}.tile svg{width:32px;height:32px}
+.city{padding:9px 22px;font-size:14px}.all{font-size:14px}.cities{padding:10px;margin-top:26px}
+.lawyers{padding-top:44px}.hl{font-size:24px}.lgrid{gap:16px;grid-auto-columns:calc(25% - 12px)}.lawyer{padding:16px;border-radius:12px}
+.lrow img{width:96px;height:106px}.lrow b{font-size:15px}.lrow small{font-size:12.5px}.lrow em{font-size:14px}.lawyer .btn{font-size:14px;padding:11px}
+.why{margin-top:48px;padding:52px 0}.why h2{font-size:30px}.why p{font-size:15.5px}.feats{font-size:13.5px;gap:14px;margin-top:26px}.feats svg{width:38px;height:38px}
+.contact{padding:28px;gap:14px}.contact h3{font-size:20px}.contact small{font-size:12.5px}.contact input{height:52px;font-size:14px}.contact textarea{height:96px;font-size:14px}
+.vk-services{padding:48px 20px 54px}.vk-services__head{margin-bottom:28px}.vk-services__head svg{width:34px;height:34px}.vk-services__head h2{font-size:26px}.vk-services__head p{font-size:15px}
+.vk-services__grid{max-width:1100px;gap:26px}.vk-arch{padding-bottom:9px}.vk-arch::after{height:9px}.vk-arch__body{min-height:250px;padding:34px 18px 20px;border-radius:130px 130px 8px 8px}.vk-arch__body::before{inset:6px;border-radius:124px 124px 4px 4px}
+.vk-arch__icon{width:58px;height:58px;margin-bottom:14px}.vk-arch__icon svg{width:28px;height:28px}.vk-arch h3{font-size:16px;margin-bottom:6px}.vk-arch p{font-size:13.5px}
+.blog{padding-top:44px;padding-bottom:56px;gap:32px}.agrid{gap:16px}.art img{height:120px}.art p{font-size:14.5px;margin:12px 14px 4px}.art small{margin:0 14px;font-size:12.5px}
+details{padding:14px 18px;font-size:14.5px}.faq{gap:12px}
+footer{font-size:14px;padding-top:44px}.fgrid h4{font-size:16px}.flogo{height:48px}.copy{font-size:12.5px;margin-top:34px;padding:16px}}
+@media(max-width:860px){.hero__img{opacity:.3}.slide{width:100%;padding-inline:20px}.hero__in{padding:0}}
+/* ─── SEO SECTION ──────────────────────────────────────────────── */
+.seo-wrap {
+    padding: 56px 0 64px;
+    background:
+      linear-gradient(180deg, var(--bg) 0%, #e8f4ee 18%, #e8f4ee 82%, var(--bg) 100%);
+    border-top: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  /* subtle background pattern */
+  .seo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(47,182,124,.07) 0%, transparent 50%),
+      radial-gradient(circle at 85% 75%, rgba(11,61,46,.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  /* ── header ── */
+  .seo-hd {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 40px;
+  }
+  .seo-hd__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--green);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .seo-hd__badge svg {
+    width: 14px;
+    height: 14px;
+    stroke: #35d08f;
+  }
+  .seo-hd h2 {
+    font-size: 26px;
+    color: var(--green);
+    margin: 0 0 12px;
+  }
+  .seo-hd__lead {
+    font-size: 14.5px;
+    line-height: 2.1;
+    color: var(--muted);
+    margin: 0;
+  }
+  
+  /* ── 3-col cards ── */
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .seo-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .22s, box-shadow .22s;
+  }
+  .seo-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    inset-inline: 0;
+    height: 3px;
+    border-radius: 0 0 16px 16px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity .22s;
+  }
+  .seo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(11,61,46,.11);
+  }
+  .seo-card:hover::after { opacity: 1; }
+  
+  .seo-card__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .seo-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--mint);
+    border: 1px solid var(--mint-2);
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .seo-card__icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--green-2);
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .seo-card__tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-2);
+    background: var(--mint);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .seo-card h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .seo-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+    flex: 1;
+  }
+  .seo-card__link {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--green-2);
+    margin-top: 4px;
+    display: inline-block;
+    transition: gap .2s;
+  }
+  .seo-card__link:hover { color: var(--accent); }
+  
+  /* ── featured banner ── */
+  .seo-banner {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%);
+    border-radius: 16px;
+    padding: 24px 26px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .seo-banner::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    pointer-events: none;
+  }
+  .seo-banner__body {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    flex: 1;
+  }
+  .seo-banner__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .seo-banner__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .seo-banner h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .seo-banner p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: #c8e6d8;
+  }
+  .seo-banner__btn {
+    flex: none;
+    background: #fff;
+    color: var(--green);
+    font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: .2s;
+  }
+  .seo-banner__btn:hover {
+    background: #35d08f;
+    color: #fff;
+  }
+  
+  /* ── stats row ── */
+  .seo-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .seo-stat {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .seo-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(11,61,46,.09);
+  }
+  .seo-stat strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .seo-stat span {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  /* ── 2-col bottom ── */
+  .seo-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .seo-duo__item {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 22px 20px;
+  }
+  .seo-duo__item h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .seo-duo__item h3 svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: none;
+  }
+  .seo-duo__item p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+  }
+  
+  /* ── responsive ── */
+  @media (max-width: 860px) {
+    .seo-grid    { grid-template-columns: 1fr 1fr; }
+    .seo-stats   { grid-template-columns: repeat(2, 1fr); }
+    .seo-duo     { grid-template-columns: 1fr; }
+    .seo-banner  { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 560px) {
+    .seo-grid    { grid-template-columns: 1fr; }
+    .seo-hd      { text-align: right; }
+  }
+  
+
+
+
+  :root {
+    --primary-green: #10b981;
+    --primary-green-dark: #059669;
+    --primary-green-light: #ecfdf5;
+    --primary-green-glow: rgba(16, 185, 129, 0.16);
+    --tile-bg: #ffffff;
+    --tile-border: #e2e8f0;
+    --text-main: #1e293b;
+    --radius-tile: 14px;
+  }
+  
+  /* کانتینر کلی */
+  .tiles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px;
+    box-sizing: border-box;
+    direction: rtl;
+  }
+  
+  /* ردیف‌ها */
+  .trow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+  
+  /* کارت‌ها (تایل‌ها) */
+  .tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 10px;
+    background: var(--tile-bg);
+    border: 1px solid var(--tile-border);
+    border-radius: var(--radius-tile);
+    text-decoration: none;
+    color: var(--text-main);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s ease,
+                background-color 0.25s ease;
+    will-change: transform;
+  }
+  
+  /* افکت خط پایین هنگام هاور */
+  .tile::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  
+  /* آیکون داخل تایل */
+  .tile svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--primary-green);
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.2s ease;
+    flex-shrink: 0;
+  }
+  
+  /* متن کامل تخصص‌ها (بدون حذف و بدون مخفی شدن) */
+  .tile span {
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    color: var(--text-main);
+    transition: color 0.2s ease;
+    word-break: normal;
+    overflow-wrap: break-word;
+    white-space: normal; /* تضمین نمایش کامل همه کلمات */
+  }
+  
+  /* حالت‌های Hover و Active */
+  .tile:hover {
+    transform: translateY(-3px);
+    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow: 0 10px 20px -3px var(--primary-green-glow);
+    background: linear-gradient(180deg, #ffffff 0%, var(--primary-green-light) 100%);
+  }
+  
+  .tile:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  
+  .tile:hover svg {
+    transform: translateY(-2px) scale(1.08);
+    stroke: var(--primary-green-dark);
+  }
+  
+  .tile:hover span {
+    color: var(--primary-green-dark);
+  }
+  
+  .tile:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+  
+  /* تنظیمات ریسپانسیو */
+  @media (max-width: 900px) {
+    .trow {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 540px) {
+    .trow {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    
+    .tile {
+      padding: 12px 6px;
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .tile svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .tile span {
+      font-size: 0.8rem;
+    }
+  }
+  
+
+
+  /* login */
+
+
+  /* دکمه ورود / ثبت نام — نسخه Premium (بدون متغیر :root) */
+.btn.login {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  color: #ffffff;
+  background: linear-gradient(180deg, #00684a 0%, #15664b 45%, #059669 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+
+  box-shadow:
+    0 4px 14px -2px rgba(16, 185, 129, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* خط نور بالای دکمه */
+
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+
+
+/* آیکون داخل دکمه */
+.btn.login svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+
+/* نسخه موبایل */
+@media (max-width: 540px) {
+  .btn.login {
+    padding: 9px 18px;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
+}
+/* دکمه ورود / ثبت نام — شیشه‌ای براق با هایلایت ثابت سمت چپ (بدون افکت هاور) */
+.btn.login {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  color: #ffffff;
+  /* پس‌زمینه گرادینت سبز + یک هاله نوری شیشه‌ای ثابت در بالا-چپ */
+  background: 
+    radial-gradient(ellipse at 15% 15%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 35%, transparent 70%),
+    linear-gradient(180deg, #00684a 0%, #15664b 45%, #059669 100%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+
+  /* لایه‌های شیشه‌ای: خط نور بالای دکمه + لبه داخلی + سایه عمق */
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.25),
+    0 4px 14px -2px rgba(0, 104, 74, 0.45);
+
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* انعکاس هلالی براق روی نیمه بالایی (افکت شیشه عینک / عدسی) */
+.btn.login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  pointer-events: none;
+}
+
+/* آیکون دکمه */
+.btn.login svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* متن دکمه */
+.btn.login span {
+  position: relative;
+  z-index: 1;
+}
+
+/* حالت کلیک ملایم (فقط فیدبک لمس بدون جابه‌جایی دکمه) */
+.btn.login:active {
+  filter: brightness(0.95);
+}
+
+/* نسخه موبایل */
+@media (max-width: 540px) {
+  .btn.login {
+    padding: 8px 16px;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
+}
+
+
+
+.location-wrapper {
+  width: 100%;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  direction: rtl;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+/* کانتینر اصلی که ۱۰٪ و ۹۰٪ را نگه می‌دارد */
+.cities-container {
+  display: flex;
+  align-items: stretch;
+  gap: 15px;
+  background: #f8fafc;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+/* بخش ۱۰ درصد */
+.sidebar-map {
+  flex: 0 0 10%; /* ستون نقشه */
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #00684b80;
+  border-radius: 14px !important;
+
+  gap: 10px;
+}
+
+.iran-map-img {
+  width: 70px;
+  height: 70px;
+}
+
+
+
+/* خط جداکننده */
+.vertical-divider {
+  width: 1px;
+  background: #5c5b5a;
+}
+
+/* بخش ۹۰ درصد */
+.cities-grid {
+  flex: 1; /* این بخش ۹۰٪ فضا را پر می‌کند */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+
+
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 640px) {
+  .cities-container {
+    flex-direction: column; /* چیدمان ستونی برای موبایل */
+  }
+
+  .sidebar-map {
+    flex: 1;
+    flex-direction: row; /* نقشه و لینک کنار هم در موبایل */
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #cbd5e1;
+  }
+
+  .vertical-divider {
+    display: none; /* خط جداکننده در موبایل حذف شود */
+  }
+}
+
+
+
+
+/* بخش کناری نقشه */
+.sidebar-map {
+  flex: 0 0 130px; /* عرض ثابت و کافی برای بزرگ‌تر شدن عکس */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px;
+  /* جلوگیری از تغییر شکل کانتینر در صورت تغییر محتوا */
+  flex-shrink: 0; 
+}
+
+/* عکس نقشه */
+.iran-map-img {
+  width: 100%;       /* عکس تا جای ممکن عرض کانتینر را پر می‌کند */
+  max-width: 90px;   /* سقف اندازه عکس: هرچقدر کانتینر بزرگ شود، عکس از 90px بیشتر نمی‌شود */
+  height: auto;      /* حفظ نسبت ابعاد */
+  object-fit: contain; /* برای اینکه عکس تغییر شکل ندهد */
+  transition: transform 0.3s ease; /* یک افکت نرم */
+}
+
+/* برای اینکه لینک هم تراز بماند */
+.all-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #7d9b6b
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap; /* جلوگیری از شکستن خط لینک */
+}
+
+
+/* تنظیمات پایه برای دکمه‌ها (اطمینان از وجود transition) */
+.city {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  
+  /* کلید اصلی برای انیمیشن نرم: */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* افکت هاور */
+.city:hover {
+  background-color: #087653; /* همان سبز اصلی */
+  color: #ffffff;
+  border-color: #087653;
+  cursor: pointer;
+  
+  /* کمی بزرگ‌نمایی برای جذابیت بیشتر */
+  transform: scale(1.05);
+  
+  /* اضافه کردن یک سایه ملایم برای ایجاد عمق */
+  box-shadow: 0 4px 12px rgba(8, 118, 83, 0.2);
+  
+  /* اطمینان از اینکه لایه بالاتر از بقیه قرار می‌گیرد */
+  z-index: 10;
+}
+
+
+/* slider */
+.lawyer-slider-section {
+  direction: rtl;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 30px 0;
+  position: relative;
+  padding-top: 10px;
+}
+
+.lawyer-slider-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.lawyer-slider-title svg {
+  width: 26px;
+  height: 26px;
+  fill: #084c3c;
+}
+
+/* کانتینر بیرونی برای نگه‌داشتن دکمه‌ها */
+.lawyer-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* کادر برش اسلایدها */
+.lawyer-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ترَک متحرک */
+.lawyer-slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* هر صفحه اسلاید ۶ تایی (۳ ستون در ۲ سطر) */
+.lawyer-slider-page {
+  flex: 0 0 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 18px;
+  padding: 10px 4px;
+}
+
+/* کارت‌ها */
+/* کارت پایه لوکس */
+.lawyer-card {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  
+  /* اتصال بک گراند تولید شده */
+  background-image: url('images/card-template-bg.webp');
+  background-size: 100% 100%; /* پوشش کامل طول و عرض بدون برش */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  border-radius: 28px;
+  padding: 38px 24px 22px; /* فضای بالای بیشتر برای تنفس لوگوی طلایی بالای نام */
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  
+  /* کادر دوبل برجسته و خط داخلی طلایی */
+  border: 1.5px solid rgba(0, 0, 0, 0.06);
+  outline: 1.5px solid rgba(197, 155, 39, 0.45);
+  outline-offset: -7px;
+  box-shadow: 
+    0 12px 32px -6px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(197, 155, 39, 0.08);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lawyer-card:hover {
+  transform: translateY(-5px);
+  outline-color: rgba(197, 155, 39, 0.85);
+  box-shadow: 
+    0 20px 42px -6px rgba(0, 0, 0, 0.12),
+    0 0 24px rgba(197, 155, 39, 0.25);
+}
+
+/* ساختار سربرگ */
+.lawyer-card__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row-reverse; /* پرتره در چپ، مشخصات در راست */
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* قاب عکس دایره‌ای با رینگ دوبل متالیک */
+.lawyer-card__avatar-frame {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  padding: 3.5px;
+  background: linear-gradient(135deg, #ffd700 0%, #b8860b 45%, #fff1a8 70%, #996515 100%);
+  box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lawyer-card__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #084c3c; /* رینگ سبز یشمی هماهنگ */
+  display: block;
+}
+
+/* اطلاعات متنی */
+.lawyer-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.lawyer-card__name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b2238;
+  line-height: 1.3;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* دیوایدر لوزی طلایی */
+.lawyer-card__divider {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 80%;
+  margin: 6px 0 8px;
+}
+
+.lawyer-card__divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af37, rgba(212, 175, 55, 0.15));
+}
+
+.lawyer-card__diamond {
+  font-size: 0.55rem;
+  color: #c59b27;
+  font-style: normal;
+}
+
+.lawyer-card__role {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #8c734b;
+  margin-bottom: 8px;
+}
+
+/* شماره تماس */
+.lawyer-card__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0b2238;
+  transition: color 0.2s ease;
+}
+
+.lawyer-card__phone:hover {
+  color: #b8860b;
+}
+
+.lawyer-card__phone-icon {
+  width: 16px;
+  height: 16px;
+  fill: #c59b27;
+}
+
+/* دکمه اکشن شیشه‌ای سبز زمردی با لبه طلایی */
+.lawyer-card__action-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #ffffff;
+  background: linear-gradient(180deg, #0a5f4c 0%, #063c2f 100%);
+  border: 1.5px solid #d4af37;
+  box-shadow: 
+    0 5px 16px rgba(8, 76, 60, 0.35),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lawyer-card__action-btn:hover {
+  background: linear-gradient(180deg, #0d705a 0%, #084939 100%);
+  border-color: #ffd700;
+  box-shadow: 
+    0 8px 24px rgba(8, 76, 60, 0.5),
+    0 0 14px rgba(212, 175, 55, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+
+/* ================= هدر اسلایدر ================= */
+.lawyer-slider-header {
+  display: flex;
+  flex-direction: row;          /* اجباری، چون ممکنه والد flex-column باشه */
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between; /* عنوان: راست | دکمه: چپ */
+  gap: 16px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.lawyer-slider-header__title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: 0;       /* پاک‌سازی مقادیر ناخواسته */
+}
+
+.lawyer-slider-header__icon-badge {
+  flex-shrink: 0;
+  margin-left: 2px;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #454d46, #3a5140);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6eff51;
+  box-shadow: 0 4px 14px rgba(11, 124, 37, 0.921);
+}
+
+.lawyer-slider-header__icon-badge svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.lawyer-slider-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a221a;
+}
+
+.lawyer-slider-subtitle {
+  display: block;
+  font-size: 0.85rem;
+  color: #718096;
+  margin-top: 2px;
+}
+
+/* دکمه مشاهده همه — چسبیده به چپ */
+.lawyer-view-all-btn {
+  flex-shrink: 0;
+  margin-inline-start: auto;    /* مهم: در RTL خودش می‌ره سمت چپ */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid rgba(197, 155, 39, 0.45);
+  color: #0b4619;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.lawyer-view-all-btn__arrow {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.lawyer-view-all-btn:hover {
+  background: #0b4619;
+  color: #fff;
+  border-color: #0b4619;
+}
+
+.lawyer-view-all-btn:hover .lawyer-view-all-btn__arrow {
+  transform: translateX(-4px);
+}
+
+/* ================= دکمه‌های ناوبری اسلایدر ================= */
+.lawyer-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.lawyer-slider-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(197, 155, 39, 0.45);
+  color: #0b4619;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.lawyer-slider-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.lawyer-slider-btn:hover {
+  background: #0b4619;
+  color: #d4af37;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* چسبیده به لبه‌های بیرونی viewport، هم‌تراز با وسط کارت‌ها */
+.lawyer-slider-btn--right {
+  right: -22px;
+}
+
+.lawyer-slider-btn--left {
+  left: -22px;
+}
+
+/* در موبایل داخل کادر بیایند که از صفحه بیرون نزنند */
+@media (max-width: 640px) {
+  .lawyer-slider-btn--right { right: -6px; }
+  .lawyer-slider-btn--left  { left: -6px; }
+  .lawyer-slider-btn { width: 38px; height: 38px; }
+}
+
+
+
+
+
+/* form */
+
+
+/* 1. استایل متن (سفید و خوانا) */
+.why__txt {
+  color: #ffffff;
+  max-width: 600px;
+  white-space: nowrap;
+
+}
+
+.why__txt h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d4af37; /* یک خط طلایی نازک زیر عنوان */
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.why__txt p {
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  
+  /* دستور اصلی برای جلوگیری از شکست خط */
+  white-space: nowrap;
+  
+  /* تنظیمات برای مدیریت متن طولانی (اختیاری اما توصیه می‌شود) */
+  overflow: hidden;         /* مخفی کردن بخش اضافه */
+  text-overflow: ellipsis;  /* نمایش ... در انتهای متن */
+  max-width: 100%;          /* اطمینان از اینکه از کادر اصلی بیرون نمی‌زند */
+}
+
+
+/* 2. استایل گرید ویژگی‌ها (Feats) */
+.feats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* دو ستونه در دسکتاپ */
+  gap: 20px;
+}
+
+.feats > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgb(138, 166, 122); /* شیشه ای بسیار ملایم */
+  border: 1px solid rgba(212, 175, 55, 0.3); /* حاشیه طلایی ملایم */
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+/* افکت جذاب برای کارت‌ها هنگام هاور */
+.feats > div:hover {
+  background: rgba(81, 158, 46, 0.988);
+  transform: translateY(-5px);
+  border-color: #d4af37;
+}
+
+/* 3. استایل جذاب برای آیکون‌ها */
+.feats svg {
+  width: 56px;
+  height: 56px;
+  stroke: #fafafa; /* رنگ طلایی برای خطوط */
+  fill: none;
+  stroke-width: 1.5;
+  padding: 8px;
+  background: rgba(212, 175, 55, 0.485); /* پس‌زمینه طلایی بسیار کم‌رنگ */
+  border-radius: 50%; /* دایره‌ای */
+  transition: transform 0.3s ease;
+}
+
+/* انیمیشن چرخش ملایم آیکون هنگام هاور */
+.feats > div:hover svg {
+  transform: scale(1.1) rotate(5deg);
+  background: #d4af37;
+  stroke: #ffffff; /* تغییر رنگ آیکون به سفید در حالت هاور */
+}
+
+
+/* استایل گرید ویژگی‌ها */
+.feats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* دو ستون مساوی */
+  gap: 15px;
+  margin-top: 20px;
+}
+/* کارت ویژگی */
+.feat-item {
+  position: relative; /* برای اینکه آیکون نسبت به این کادر جای‌گذاری شود */
+  display: flex;
+  justify-content: center; /* متن را کاملاً وسط می‌آورد */
+  align-items: center;
+  padding: 15px 50px; /* مقدار پدینگ راست بیشتر است تا متن زیر آیکون نرود */
+  background: rgb(71, 68, 48);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+  min-height: 70px; /* برای فضای کافی آیکون بزرگ */
+}
+
+/* آیکون - چسبیده به سمت راست */
+.feat-item svg {
+  position: absolute; /* جدا از جریان متن */
+  right: 15px; /* فاصله از لبه راست */
+  width: 40px; /* کمی کوچک‌تر شد تا با کارت متناسب باشد */
+  height: 40px;
+  stroke: #ffffff;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* متن - وسط‌چین */
+.feat-text {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center; /* وسط‌چین کردن متن */
+  white-space: nowrap;
+}
+
+/* هاور افکت */
+.feat-item:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #d4af37;
+}
+
+
+/* افکت جذاب هاور */
+.feat-item:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.feat-item:hover svg {
+  stroke: #ffffff;
+}
+
+
+
+
+/* مقالات */
+
+
+/* ================== سوالات پرتکرار (نسخه پالیش‌شده) ================== */
+.faq__item {
+  background: #ffffff;
+  border: 1px solid rgba(16, 94, 66, 0.08);       /* حاشیه سبز بسیار ملایم */
+  border-bottom: 3px solid rgba(16, 94, 66, 0.25); /* 👈 بم سبز پایین کارت */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.faq__item:hover {
+  border-bottom-color: rgba(16, 94, 66, 0.6); /* بم در هاور تیره‌تر */
+}
+
+.faq__item[open] {
+  border-bottom-color: #105e42;   /* بم سبز پررنگ زمردی وقتی باز است */
+  box-shadow: 0 6px 18px rgba(16, 94, 66, 0.12);
+}
+
+/* سوال: تایپوگرافی تمیزتر */
+.faq__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: #1f2d27;               /* سبز-مشکی تیره، هماهنگ با تیتر بخش */
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.6;
+  user-select: none;
+}
+
+.faq__summary::-webkit-details-marker { display: none; }
+
+.faq__summary:hover { color: #105e42; }
+
+/* آیکون پلاس: حالا سبز هماهنگ با بم */
+.faq__icon { width: 16px; height: 16px; position: relative; flex-shrink: 0; transition: transform 0.3s ease; }
+.faq__icon::before,
+.faq__icon::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #105e42; border-radius: 2px;
+}
+.faq__icon::before { width: 13px; height: 2px; }
+.faq__icon::after  { width: 2px; height: 13px; }
+.faq__item[open] .faq__icon { transform: rotate(45deg); }
+
+/* پاسخ: فونت سبک‌تر و رنگ خوانا */
+.faq__content { padding: 0 20px 16px 20px; animation: faqFadeIn 0.3s ease; }
+
+.faq__content p {
+  color: #5c6b64;               /* خاکستری مایل به سبز، بدون فشار به چشم */
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.9;
+  margin: 0;
+}
+
+@keyframes faqFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* کانتینر ترازبندی دکمه زیر گرید مقالات */
+.arts__more-wrap {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center; /* اگر خواستی گوشه راست باشه: justify-content: flex-start */
+}
+
+/* دکمه اختصاصی مشاهده بیشتر */
+.btn-more-arts {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: #ffffff;
+  color: #105e42; /* همان سبز زمردی شاخص */
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(16, 94, 66, 0.2);
+  border-bottom: 3px solid #105e42; /* هماهنگ با بمِ سبز پایین سوالات متداول */
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(16, 94, 66, 0.06);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+/* آیکون فلش */
+.btn-more-arts__icon {
+  transition: transform 0.25s ease;
+}
+
+/* تعامل هاور: تغییر بک‌گراند به سبز ملایم و حرکت فلش */
+.btn-more-arts:hover {
+  background: #105e42;
+  color: #ffffff;
+  border-color: #105e42;
+  border-bottom-color: #0b432f;
+  box-shadow: 0 6px 18px rgba(16, 94, 66, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-more-arts:hover .btn-more-arts__icon {
+  transform: translateX(-4px); /* لغزش فلش به سمت چپ در هاور */
+}
+
+.btn-more-arts:active {
+  transform: translateY(0);
+}
+
+
+
+/* ۱. اطمینان از حذف حاشیه‌های پیش‌فرض صفحه */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ۲. تمام‌عرض شدن واقعی فوتر بدون وابستگی به والد */
+footer {
+  width: 100vw !important; /* به اندازه کل پهنای نمایشگر */
+  position: relative !important;
+  right: 50% !important;
+  left: 50% !important;
+  margin-right: -50vw !important;
+  margin-left: -50vw !important;
+  background-color: var(--green, #0b3c2c) !important;
+  box-sizing: border-box !important;
+}
+
+/* ۳. نگه‌داشتن محتوای فوتر داخل عرض استاندارد */
+.fgrid {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 40px 20px 25px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.copy {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+
+/* فوتر تمام‌عرض */
+footer {
+  width: 100%;
+  background: var(--green);
+  color: #cfe6db;
+  font-size: 13px;
+}
+
+.fgrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 20px 30px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.4fr 1fr;
+  gap: 28px;
+  box-sizing: border-box;
+}
+
+.fcol h4 {
+  color: #fff;
+  margin: 0 0 14px;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 8px;
+}
+/* خط طلایی زیر تیترها — امضای لوکس */
+.fcol h4::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+.fcol a, .fcol p {
+  display: block;
+  margin: 0 0 9px;
+  color: #cfe6db;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+.fcol a:hover { color: #d4af37; transform: translateX(-3px); }
+
+/* برند */
+.flogo {
+  height: 46px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.fdesc { line-height: 1.9; }
+
+/* شبکه‌های اجتماعی */
+.fsocial { display: flex; gap: 10px; margin-top: 14px; }
+.fsocial a {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(212,175,55,.4);
+  border-radius: 50%;
+  transition: all .25s ease;
+}
+.fsocial svg { width: 18px; height: 18px; stroke: #d4af37; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.fsocial a:hover { background: #d4af37; transform: translateY(-3px); }
+.fsocial a:hover svg { stroke: var(--green); }
+
+/* آیتم‌های تماس با آیکون */
+.fitem {
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+}
+.fitem svg {
+  width: 17px; height: 17px;
+  stroke: #d4af37; fill: none;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ستون اعتماد */
+.ftrust { text-align: center; }
+.frate strong { color: #d4af37; font-size: 22px; display: block; }
+.frate span { color: #d4af37; letter-spacing: 3px; display: block; margin: 4px 0; }
+.frate small { color: #9fc4b2; }
+.enamad {
+  display: inline-block;
+  margin-top: 14px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  transition: transform .25s ease;
+}
+.enamad:hover { transform: scale(1.05); }
+.enamad img { height: 70px; display: block; }
+
+/* نوار کپی‌رایت */
+.copy {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+  box-sizing: border-box;
+  color: #9fc4b2;
+  font-size: 12px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 992px) {
+  .fgrid { grid-template-columns: 1fr 1fr; }
+  .fbrand, .ftrust { grid-column: span 2; text-align: center; }
+  .fsocial { justify-content: center; }
+  .fitem { justify-content: center; }
+}
+@media (max-width: 520px) {
+  .fgrid { grid-template-columns: 1fr; }
+  .fbrand, .ftrust { grid-column: span 1; }
+}
+
+
+
+
+/* طراحی دکمه شناور لوکس */
+.floating-cta {
+  position: fixed;
+  bottom: 30px;
+  right: 3px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green, #057d55);
+  color: #faf2d8; /* طلایی */
+  padding: 8px 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(212, 175, 55, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse-gold 2s infinite;
+}
+
+.floating-cta:hover {
+  background: #125741;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floating-cta__text {
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.floating-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* افکت تپش طلایی */
+@keyframes pulse-gold {
+  0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 0 rgb(99, 252, 28); }
+  70% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 10px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+  .floating-cta {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+  }
+  .floating-cta__text { display: none; } /* در موبایل فقط آیکون نمایش داده شود */
+  .floating-cta { border-radius: 50%; padding: 15px; }
+}
+
+
