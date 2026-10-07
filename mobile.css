@@ -15,7 +15,7 @@ a,button{touch-action:manipulation}
 /* ---------- هدر ---------- */
 .top{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .top .wrap{height:60px;gap:10px;padding-inline:14px}
-.logo img{height:66px;width:auto}
+.logo img{height:56px;width:auto}
 nav{display:none}
 .btn.login{margin-inline-start:auto;width:42px;height:42px;padding:0;justify-content:center;border-radius:13px}
 .btn.login span{display:none}
